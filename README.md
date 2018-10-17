@@ -26,3 +26,9 @@ It's not perfect, but it might be close enough for a sequence alignment approach
 
 #### OCRopus [[Homepage]](https://github.com/tmbdev/ocropy)
 Collection of OCR utilities, usable from command line, based in LSTM. Once contained specific support for handwriting / manuscripts, but that functionality has been removed. It can still be used for historical manuscripts, with some success: [with lots of careful training, this project managed 9.7% error rates on handwriting similar to that of the Salzinnes manuscript](https://graal.hypotheses.org/786). However, the same model did not work well on other manuscripts.
+
+#### In Codice Ratio [[Homepage]](http://www.inf.uniroma3.it/db/icr/)
+
+[Overview Paper](http://ceur-ws.org/Vol-2034/paper_2.pdf)
+
+OCR specifically for latin handwritten religious texts (The Vatican Secret Archives). Code fully available on website (in process of testing)
