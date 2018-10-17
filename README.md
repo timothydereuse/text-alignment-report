@@ -24,6 +24,8 @@ Intended to be used by manually transcribing a large amount of text and then usi
 
 It's not perfect, but it might be close enough for a sequence alignment approach, at least for some manuscripts.
 
+[Another model of gothic handwriting that might be usable, though not yet public] (https://read.transkribus.eu/2017/06/09/medieval-handwriting-and-handwritten-text-recognition/)
+
 #### OCRopus [[Homepage]](https://github.com/tmbdev/ocropy)
 Collection of OCR utilities, usable from command line, based in LSTM. Once contained specific support for handwriting / manuscripts, but that functionality has been removed. It can still be used for historical manuscripts, with some success: [with lots of careful training, this project managed 9.7% error rates on handwriting similar to that of the Salzinnes manuscript](https://graal.hypotheses.org/786). However, the same model did not work well on other manuscripts.
 
