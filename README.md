@@ -12,7 +12,7 @@ Non-proprietary OCR applications in active development as of 2018:
 * [Early latin training set for Tesseract](https://latinocr.org/)
 
 #### Transkribus [[Homepage]](https://transkribus.eu/Transkribus/)
-A large application for recognizing handwriting in historical documents - totally centralized, training data shared between users. Main project is GUI only, but there exists a python toolkit that allows interfacing with it and its main server, so in principle it would be possible to use its functionality in a separate program. 
+A large application for recognizing handwriting in historical documents - totally centralized, training data shared between users. Also contains quite robust automatic layout detection / text line finding. Main project is GUI only, but there exists a python toolkit that allows interfacing with it and its main server, so in principle it would be possible to use its functionality in a separate program (if the project's maintainers allow). 
 
 Intended to be used by manually transcribing a large amount of text and then using that to train a model of your own manuscript. This requires manual assistance from their project managers. They do have a few already-trained models of various types of handwriting, including gothic script. Here are some results of transcribing plainchant manuscripts using their gothic script model:
 
@@ -25,4 +25,4 @@ Intended to be used by manually transcribing a large amount of text and then usi
 It's not perfect, but it might be close enough for a sequence alignment approach, at least for some manuscripts.
 
 #### OCRopus [[Homepage]](https://github.com/tmbdev/ocropy)
-Collection of OCR utilities, usable from command line. Once contained support for handwriting / manuscripts, but that functionality has been removed. Cannot find anyone using or reccomending its use on anything but printed sources.
+Collection of OCR utilities, usable from command line, based in LSTM. Once contained specific support for handwriting / manuscripts, but that functionality has been removed. It can still be used for historical manuscripts, with some success: [with lots of careful training, this project managed 9.7% error rates on handwriting similar to that of the Salzinnes manuscript](https://graal.hypotheses.org/786). However, the same model did not work well on other manuscripts.
