@@ -31,4 +31,4 @@ Collection of OCR utilities, usable from command line, based in LSTM. Once conta
 
 [Overview Paper](http://ceur-ws.org/Vol-2034/paper_2.pdf)
 
-OCR specifically for latin handwritten religious texts (The Vatican Secret Archives). Code fully available on website (in process of testing)
+OCR specifically for latin handwritten religious texts (The Vatican Secret Archives). Code fully available on website (in process of testing) but there is no documentation and many of the comments are in italian. Possibly ask to use their very extensive training data, which is also available?
