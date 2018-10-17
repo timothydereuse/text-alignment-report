@@ -14,5 +14,15 @@ Non-proprietary OCR applications in active development as of 2018:
 #### Transkribus [[Homepage]](https://transkribus.eu/Transkribus/)
 A large application for recognizing handwriting in historical documents - totally centralized, training data shared between users. Main project is GUI only, but there exists a python toolkit that allows interfacing with it and its main server, so in principle it would be possible to use its functionality in a separate program. 
 
+Intended to be used by manually transcribing a large amount of text and then using that to train a model of your own manuscript. This requires manual assistance from their project managers. They do have a few already-trained models of various types of handwriting, including gothic script. Here are some results of transcribing plainchant manuscripts using their gothic script model:
+
+[Einseideln](https://raw.githubusercontent.com/timothydereuse/text-alignment-report/master/transkribus-einseideln.png) |
+[Klosterneuberg](https://github.com/timothydereuse/text-alignment-report/blob/master/transkribus-klosterneuberg.png) |
+[Salzinnes](https://github.com/timothydereuse/text-alignment-report/blob/master/transkribus-salzinnes.png) |
+[St. Maurf](https://github.com/timothydereuse/text-alignment-report/blob/master/transkribus-stmaurf.png) |
+[St. Gall 390](https://github.com/timothydereuse/text-alignment-report/blob/master/transkribus-stgall.png)
+
+It's not perfect, but it might be close enough for a sequence alignment approach, at least for some manuscripts.
+
 #### OCRopus [[Homepage]](https://github.com/tmbdev/ocropy)
 Collection of OCR utilities, usable from command line. Once contained support for handwriting / manuscripts, but that functionality has been removed. Cannot find anyone using or reccomending its use on anything but printed sources.
