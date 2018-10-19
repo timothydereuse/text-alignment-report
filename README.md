@@ -24,7 +24,7 @@ Intended to be used by manually transcribing a large amount of text and then usi
 
 It's not perfect, but it might be close enough for a sequence alignment approach, at least for some manuscripts.
 
-[Another Transkribus-based model of gothic handwriting that might be usable, though not yet public](https://read.transkribus.eu/2017/06/09/medieval-handwriting-and-handwritten-text-recognition/)
+[Another Transkribus-based model of gothic handwriting that might be usable, though not yet public](https://read.transkribus.eu/2017/06/09/medieval-handwriting-and-handwritten-text-recognition/). Interesting note: language models are not that useful for these texts because spellings are so inconsistent even within individual manuscripts written by the same person.
 
 #### OCRopus [[Homepage]](https://github.com/tmbdev/ocropy)
 Collection of OCR utilities, usable from command line, based in LSTM. Once contained specific support for handwriting / manuscripts, but that functionality has been removed. It can still be used for historical manuscripts, with some success: [with lots of careful training, this project managed 9.7% error rates on handwriting similar to that of the Salzinnes manuscript](https://graal.hypotheses.org/786). However, the same model did not work well on other manuscripts.
@@ -33,6 +33,8 @@ Collection of OCR utilities, usable from command line, based in LSTM. Once conta
 
 [Overview Paper](http://ceur-ws.org/Vol-2034/paper_2.pdf)
 
-OCR specifically for latin handwritten religious texts (The Vatican Secret Archives). Code fully available on website (in process of testing) but there is no documentation and many of the comments are in italian. Method based on training a CNN to distinguish images that represent a single character from those that represent a character fragment or more than one character. Does not include any layout analysis / text line detection.
+OCR specifically for latin handwritten religious texts (The Vatican Secret Archives). Code fully available on website (in process of testing) but there is no documentation and many of the comments are in italian. Method based on training a CNN to distinguish images that represent a single character from those that represent a character fragment or more than one character. Ground truth for this purpose obtained through a custom crowdsourcing platform and 120 high school students.
 
-[Results on individual words are encouraging](http://www.inf.uniroma3.it/db/icr/preliminary-results.html). Presents many of the same problems (different forms of same letter, ornamentation, inconsistent spacing) present in the plainchant manuscripts. The particular handwriting they use is similar to that of St. Gall 390, St. Maurf.
+Only works on images of manually extracted words. Does not include any layout analysis / text line detection.
+
+[Results on individual words are encouraging](http://www.inf.uniroma3.it/db/icr/preliminary-results.html). Presents many of the same problems (different forms of same letter, ornamentation, inconsistent spacing) present in the plainchant manuscripts. The particular handwriting they use is similar to that of St. Gall 390, St. Maur.
