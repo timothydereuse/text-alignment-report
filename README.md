@@ -33,4 +33,6 @@ Collection of OCR utilities, usable from command line, based in LSTM. Once conta
 
 [Overview Paper](http://ceur-ws.org/Vol-2034/paper_2.pdf)
 
-OCR specifically for latin handwritten religious texts (The Vatican Secret Archives). Code fully available on website (in process of testing) but there is no documentation and many of the comments are in italian. Possibly ask to use their very extensive training data, which is also available?
+OCR specifically for latin handwritten religious texts (The Vatican Secret Archives). Code fully available on website (in process of testing) but there is no documentation and many of the comments are in italian. Method based on training a CNN to distinguish images that represent a single character from those that represent a character fragment or more than one character. Does not include any layout analysis / text line detection.
+
+[Results on individual words are encouraging](http://www.inf.uniroma3.it/db/icr/preliminary-results.html). Presents many of the same problems (different forms of same letter, ornamentation, inconsistent spacing) present in the plainchant manuscripts.
