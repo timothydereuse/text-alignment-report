@@ -6,6 +6,14 @@ An algorithm from bioinformatics that computes global alignment, finding matchin
 
 In this task, we are given a correct human transcript of a medieval manuscript and an OCRed version of that manuscript that likely contains many errors but has information on where each letter is placed on the page. By identifying similar strings of characters in these two sequences, we can match each word in the correct transcript with its occurrence in the noisy OCR, and thus find that word's location on the image of the manuscript.
 
+Example: first line of einsiedeln_001v. (In all examples, the first line is the human transcript, the second line is the noisy OCR of the manuscript, and the third shows the result of the alignment: `O` is a match, `X` is a mismatch (or, replacement), and a space ` ` is a gap (insertion / deletion) in one of the sequences.
+
+```
+poten_tiam venientem et nebu__lam tot_am terram_ teg_entem Ite obv__iam ei et dicite N_unt
+potennain iiee__nten et nebit lam to tam terrain te gen emt__e ob llian e iet bicite slunt
+OOOOO XOXXXXOX  OOOXOOOOOOOX  OOOOOOX OOOOOOOOX OOOX OOXOOX  OOOOX  OOXOOXXOOOXOOOOOOX OOO
+```
+
 
 ## OCR Performance on Medieval Manuscripts
 
