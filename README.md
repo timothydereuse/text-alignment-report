@@ -1,5 +1,14 @@
 # text-alignment-report
 
+#### Needleman-Wunsch Algorithm [[wikipedia]](https://en.wikipedia.org/wiki/Needleman%E2%80%93Wunsch_algorithm)
+
+An algorithm from bioinformatics that computes global alignment, finding matching regions between two strings of characters. The assumption is that both sequences are related through the operations of character insertion, character deletion, and character replacement; one way to interpret the algorithm is that it finds the most efficient way to transform one sequence into another using just those operations. Each operation usually has a cost associated with it depending on the application; character replacement may be a less 'costly' operation than insertion and deletion, for example.
+
+In this task, we are given a correct human transcript of a medieval manuscript and an OCRed version of that manuscript that likely contains many errors but has information on where each letter is placed on the page. By identifying similar strings of characters in these two sequences, we can match each word in the correct transcript with its occurrence in the noisy OCR, and thus find that word's location on the image of the manuscript.
+
+
+## OCR Performance on Medieval Manuscripts
+
 [Wikipedia's Comparison of Major OCR Software](https://en.wikipedia.org/wiki/Comparison_of_optical_character_recognition_software). Most are not adaptive and support only printed text.
 
 [A 2015 test of then-current OCR methods on medieval manuscripts](https://brandonwhawk.net/2015/04/20/ocr-and-medieval-manuscripts-establishing-a-baseline/). Two proprietary OCR engines are used (Adobe Acrobat and ABBYY Finereader). On a printed source, FineReader has a per-character accuracy of 97.78%, and Acrobat has an accuracy of 87.57%. However, on the handwritten source examined (St. Gall 561), only Finereader bears any remote resemblance to the original text (no percentage given, but it'd be quite low; less than 50%).
