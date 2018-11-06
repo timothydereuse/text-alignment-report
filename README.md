@@ -2,7 +2,7 @@
 
 #### Needleman-Wunsch Algorithm [[wikipedia]](https://en.wikipedia.org/wiki/Needleman%E2%80%93Wunsch_algorithm)
 
-An algorithm from bioinformatics that computes global alignment, finding matching regions between two strings of characters. The assumption is that both sequences are related through the operations of character insertion, character deletion, and character replacement; one way to interpret the algorithm is that it finds the most efficient way to transform one sequence into another using just those operations. Each operation usually has a cost associated with it depending on the application; character replacement may be a less 'costly' operation than insertion and deletion, for example.
+An algorithm from bioinformatics that computes global alignment, finding matching regions between two strings of characters. The assumption is that both sequences are related through the operations character replacement and character insertion/deletion (indels). See also: (Levenshtein distance)[https://en.wikipedia.org/wiki/Levenshtein_distance]. Each operation usually has a cost associated with it depending on the application; replacement may be a less 'costly' operation than indels, for example.  One way to interpret the algorithm is that it finds the least-costly way to transform one sequence into another under the given operations. 
 
 In this task, we are given a correct human transcript of a medieval manuscript and an OCRed version of that manuscript that likely contains many errors but has information on where each letter is placed on the page. By identifying similar strings of characters in these two sequences, we can match each word in the correct transcript with its occurrence in the noisy OCR, and thus find that word's location on the image of the manuscript.
 
@@ -24,9 +24,41 @@ acb  |  a_cb
 OXX  |  O O
 ```
 
-If both mismatches and gaps have the same cost, then the second alignment is better. If mismatches are considered less costly than gaps, however, then the first alignment might be better.
+If both mismatches and gaps have the same cost, then the second alignment is better; it has two matches and two gaps, whereas the first has only one match and two mismatches. If mismatches are considered less costly than gaps, however, then the first alignment might be better.
 
-We also consider that a desirable alignment might have gaps that tend to be contiguous rather than scattered about.
+#### Affine Gap Penalties
+
+So far the assumption has been that a gap incurs a fixed cost, regardless of context. In practice it can be desirable to assign two costs to gaps; the cost for _opening_ a gap, and the cost for _extending_ a gap. This can be used to encourage contiguous blocks of gaps in an alignment, which is desirable in some applications.
+
+Einsiedeln_001r with a cost of -1 for gaps, -1 for mismatches, and 1 for matches
+```
+Ecce___ di__________es__ ve_ni___ent Ro____rate caeli desuper Ecce no_men do_mini _ve_nit
+naduentu din. at rcsvas.  Ie dius int uo si oate c_eli drsupi. Eoce nonien donuini iue uit
+XXXXO   OOO          XO  OXO XO   XOOOXO    XOOOOO OOOOOXOOOXXOOXOOOOO XOOOOO XOOOO XO XOO
+
+ de longin_q_uo_______ e________t _claritas eius replet orb_____________em _____terrarum e
+ _r longin qllo t i in elwangrlis a laritas ei_s irplct orbtii rra vo vae, nd uitatwann. g
+O XOOOOOOO O XO       OO        XO XOOOOOOOOOO OOXXOOXOOOOO             OXO     OXXXOXXXOX
+
+```
+
+Einseideln_001r with a cost of -1 for gap extension, -4 for gap opening, -4 for mismatches, and 4 for matches:
+
+```
+__________________Ec_______ce dies venient Ro____rate caeli desuper Ecce no_men do_mini _v
+.naduentu din. at rcsvas.  Ie dius ___i_nt uo si oate c_eli drsupi. Eoce nonien donuini iu
+                   O       XOOOOXOO   O OOOXO    XOOOOO OOOOOXOOOXXOOXOOOOO XOOOOO XOOOO X
+
+e_nit de longin_q_uo et _________________claritas eius _replet orbem t__errarum euo_uae___
+e uit _r longin qllo _t i in elwangrlis a laritas ei_s ir_plct orb___tii rra___ _vo vae, n
+O XOOO XOOOOOOO O XOO OO                 XOOOOOOOOOO OO O OOXOOOOO   O  XOOO   O XO XOO
+```
+
+The algorithm will only interrupt a gap if it can get several matches out of it; smaller gaps are only beneficial when they permit several matches nearby.
+
+#### Asymmetric Penalties
+
+
 
 ## OCR Performance on Medieval Manuscripts
 
