@@ -56,9 +56,27 @@ O XOOO XOOOOOOO O XOO OO                 XOOOOOOOOOO OO O OOXOOOOO   O  XOOO   O
 
 The algorithm will only interrupt a gap if it can get several matches out of it; smaller gaps are only beneficial when they permit several matches nearby.
 
-#### Asymmetric Penalties
+#### Asymmetric Costs
 
+Most sequence alignment algorithms do not care about the order of their inputs, and both are treated exactly the same. However, we have foreknowledge about the kinds of "mutations" present in the data, and this knowledge can be exploited by treating the transcription string differently to the OCRed string.
 
+Most significantly, the transcript includes only text directly associated with neumes (referred to as _musical text_ from here on out) whereas the OCR process attempts to process all text and all markings on the page that _look_ like text. A perfect alignment would therefore have strictly more gaps in the transcript string than in the OCR string; more of the OCR string must be skipped, since errors will manifest as long strings of non-musical text in the OCR.
+
+We can therefore set different penalties for gap extension and gap opening in each string such that long gaps are incentivised in the transcript string but discouraged in the OCR string.
+
+```
+___cce___ di__________es__ ve_ni___ent Ro____rate caeli desuper Ecce no_men do_mini _ve_ni
+.naduentu din. at rcsvas.  Ie dius int uo si oate c_eli drsupi. Eoce nonien donuini iue ui
+   XXO   OOO          XO  OXO XO   XOOOXO    XOOOOO OOOOOXOOOXXOOXOOOOO XOOOOO XOOOO XO XO
+
+t de longin_q_uo_______ e________t _claritas eius replet orbem terrarum __e_____uouae Ecce
+t _r longin qllo t i in elwangrlis a laritas ei_s irplct orb_tii rra vo vae, nd uitatwann.
+OO XOOOOOOO O XO       OO        XO XOOOOOOOOOO OOXXOOXOOOOO XXXXOOOXXXO  O     OXXOXXXXXX
+```
+
+I haven't yet run anything to quantify whether or not this gives better results on the full process. Since there are few parameters and these are very small documents, I can probably just run a brute-force test of the search space on all possible values for gap extension and gap opening once I have an evaluation metric in place.
+
+(the topic of asymmetric costs is something I haven't been able to find much information on elsewhere; doesn't seem to be of great interest to most computational biologists?)
 
 ## OCR Performance on Medieval Manuscripts
 
