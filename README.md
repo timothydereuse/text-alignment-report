@@ -14,6 +14,10 @@ opoten_nain iieenten et nebit lam to tam terrain te gen em__te ob llian e iet bi
 OOOOOO XOXXXXXXOOOOXOOOOOOO  XOOOOOO OOOOOOOOO XOOO OOOXOO  OOOOO  XOOXOOXXOOOXOOOOOO XOOO
 ```
 
+(Einsiedeln_001v text layer image)[https://raw.githubusercontent.com/timothydereuse/text-alignment-report/master/einsiedeln_001v_text.png]
+(Einsiedeln_001v human transcript)[https://github.com/timothydereuse/text-alignment-report/blob/master/einsiedeln_001v_transcript.txt]
+(Einsiedeln_001v OCRed transcript with Transkribus)[https://github.com/timothydereuse/text-alignment-report/blob/master/einsiedeln_001v_ocr.txt]
+
 #### Gap Penalties
 
 Different operations can be assigned different costs in the alignment process. Consider the two strings `abc` and `acb`, and these two different ways to align them:
@@ -32,9 +36,9 @@ So far the assumption has been that a gap incurs a fixed cost, regardless of con
 
 Einsiedeln_001r with a cost of -1 for gaps, -1 for mismatches, and 1 for matches
 ```
-Ecce___ di__________es__ ve_ni___ent Ro____rate caeli desuper Ecce no_men do_mini _ve_nit
+_Ecce___ di__________es__ ve_ni___ent Ro____rate caeli desuper Ecce no_men do_mini _ve_nit
 naduentu din. at rcsvas.  Ie dius int uo si oate c_eli drsupi. Eoce nonien donuini iue uit
-XXXXO   OOO          XO  OXO XO   XOOOXO    XOOOOO OOOOOXOOOXXOOXOOOOO XOOOOO XOOOO XO XOO
+ XXXO   OOO          XO  OXO XO   XOOOXO    XOOOOO OOOOOXOOOXXOOXOOOOO XOOOOO XOOOO XO XOO
 
  de longin_q_uo_______ e________t _claritas eius replet orb_____________em _____terrarum e
  _r longin qllo t i in elwangrlis a laritas ei_s irplct orbtii rra vo vae, nd uitatwann. g
@@ -63,6 +67,15 @@ Most sequence alignment algorithms do not care about the order of their inputs, 
 Most significantly, the transcript includes only text directly associated with neumes (referred to as _musical text_ from here on out) whereas the OCR process attempts to process all text and all markings on the page that _look_ like text. A perfect alignment would therefore have strictly more gaps in the transcript string than in the OCR string; more of the OCR string must be skipped, since errors will manifest as long strings of non-musical text in the OCR.
 
 We can therefore set different penalties for gap extension and gap opening in each string such that long gaps are incentivised in the transcript string but discouraged in the OCR string.
+
+Einsiedeln_001r with costs of:
+
+* 4 for matches
+* -4 for mismatches
+* -4 for gap opening in the transcript
+* -1 for gap extension in the transcript
+* -4 for gap opening in OCRed text
+* -4 for gap extension in OCRed text
 
 ```
 ___cce___ di__________es__ ve_ni___ent Ro____rate caeli desuper Ecce no_men do_mini _ve_ni
