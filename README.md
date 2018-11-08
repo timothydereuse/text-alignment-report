@@ -2,21 +2,55 @@
 
 #### Needleman-Wunsch Algorithm [[wikipedia]](https://en.wikipedia.org/wiki/Needleman%E2%80%93Wunsch_algorithm)
 
-An algorithm from bioinformatics that computes global alignment, finding matching regions between two strings of characters. The assumption is that both sequences are related through the operations character replacement and character insertion/deletion (indels). See also: (Levenshtein distance)[https://en.wikipedia.org/wiki/Levenshtein_distance]. Each operation usually has a cost associated with it depending on the application; replacement may be a less 'costly' operation than indels, for example.  One way to interpret the algorithm is that it finds the least-costly way to transform one sequence into another under the given operations. 
+An algorithm from bioinformatics that computes global alignment, finding matching regions between two strings of characters. The assumption is that both sequences are related through the operations character replacement and character insertion/deletion (indels). See also: [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance). Each operation usually has a cost associated with it depending on the application; replacement may be a less 'costly' operation than indels, for example.  One way to interpret the algorithm is that it finds the least-costly way to transform one sequence into another under the given operations. 
 
 In this task, we are given a correct human transcript of a medieval manuscript and an OCRed version of that manuscript that likely contains many errors but has information on where each letter is placed on the page. By identifying similar strings of characters in these two sequences, we can match each word in the correct transcript with its occurrence in the noisy OCR, and thus find that word's location on the image of the manuscript.
 
-Example: first portion of einsiedeln_001v. (In all examples, the first line is the human transcript, the second line is the noisy OCR of the manuscript, and the third shows the result of the alignment: `O` is a match, `X` is a mismatch (or, replacement), and a space ` ` is a gap (insertion / deletion) in one of the sequences.
+Example: entirety of einsiedeln_001v. (In all examples, the first line is the human transcript, the second line is the noisy OCR of the manuscript, and the third shows the result of the alignment: `O` is a match, `X` is a mismatch (or, replacement), and a space ` ` is a gap (insertion / deletion) in one of the sequences.
 
 ```
 opotentiam venientem et neb__ulam to_tam terra_m te_gentem Ite ob__viam ei et dicite _Nunt
 opoten_nain iieenten et nebit lam to tam terrain te gen em__te ob llian e iet bicite slunt
 OOOOOO XOXXXXXXOOOOXOOOOOOO  XOOOOOO OOOOOOOOO XOOO OOOXOO  OOOOO  XOOXOOXXOOOXOOOOOO XOOO
+
+ia no_bis si tu es ipse_ Qui regnaturus es in pop__ulo Israhel Quique terrigene et filii h
+ia no bis si_ti es ipse. sli regnatuinises in popit lo_israhel. .in a t__rngene et sil_u h
+OOOOO OOOOOO OXOOOOOOOO OXXOOOOOOOOOXXXXOOOOOOOOO  XOO XOOOOOOXXXOXXXOO  OXOOOOOOOOXOO XOO
+
+o_minum si_m_ul in unum di_ves et pa_uper Ite Qui re__gis israhel intende qui deducis velu
+onmunum siumiul in_unum di ies e_ ban ber lte v iure. gis israhel intende qiu deduc_s uelu
+O OXOOOOOO O OOOOO OOOOOOO XOOOO OXO XXOOOXOOOXXOXOO  OOOOOOOOOOOOOOOOOOOOOXXOOOOOO OOXOOO
+
+d ovem ioseph qui sedes s__uper che__rubyn Nuntia Tol_lite portas principes vestras et ele
+d ouem ioseph _ain edes sit per che ti byn lunt_av ol lite portas princapes iestras et ele
+OOOXOOOOOOOOOO XOXXOOOOOO  XOOOOOOO  XXOOOOXOOO OXXOO OOOOOOOOOOOOOOOOOXOOOOXOOOOOOOOOOOOO
+
+vamini porte eternales et int_roi_bit Qui Aspitieba_m in visu no_ctis et ecce in nu____bib
+_amin_ por_e eteriales et intis i bit. a. s bitiebain imiu su nor tis eree te in_nu e. bib
+ OOOO OOOO OOOOOOXOOOOOOOOOOO XXO OOOXXXXOXXXOOOOOO XOOXXXXOOOOO XOOOOOXXOXXOOOO OO    OOO
+
+us celi filius hominis ve_nit Et da_tum est ei regnum et ho_nor et o_mnes p_opuli tribus e
+is _e__ lili_s homin_s ie nit __ da tum elt ei iegnem et ho ror er ornnes ps puli ta b_r e
+XOO O  OXOOO OOOOOOO OOXO OOOO  OOO OOOOOXOOOOOXOOOXOOOOOOO XOOOOXOO XOOOOO XOOOOOOXXO XOO
+
+t lingue servient e_i Ecce dominator dominu_s cum virtute veniet_ Et datum Missus est ga_b
+t lingue ser nent e.  v. e doninatord iminuis cum_iurtute ieni t. kt da___ _issus est_ga b
+OOOOOOOOOOOOXXOOOOO XOXXXOOOOXOOOOOOXXXOOOO OOOOO XXOOOOOOXOOOXO OXOOOO   O OOOOOOOOO OO O
+
+riel an_ge_lus ad mariam virginem desponsata io_sep_h _nuntians ei verbum et expa_vescit v
+riel an ge lus ad _a__am iurgi_e_ndesponsata io sepli iuuntians e_ ierbum_et e_pa iescit i
+OOOOOOO OO OOOOOOO O  OOOXXOOO O XOOOOOOOOOOOOO OOO XO XOOOOOOOOO OXOOOOO OOOO OO XOOOOOOX
+
+irg
+irg
+OOO
 ```
 
-(Einsiedeln_001v text layer image)[https://raw.githubusercontent.com/timothydereuse/text-alignment-report/master/einsiedeln_001v_text.png]
-(Einsiedeln_001v human transcript)[https://github.com/timothydereuse/text-alignment-report/blob/master/einsiedeln_001v_transcript.txt]
-(Einsiedeln_001v OCRed transcript with Transkribus)[https://github.com/timothydereuse/text-alignment-report/blob/master/einsiedeln_001v_ocr.txt]
+[Einsiedeln_001v text layer image](https://raw.githubusercontent.com/timothydereuse/text-alignment-report/master/einsiedeln_001v_text.png)
+
+[Einsiedeln_001v human transcript](https://github.com/timothydereuse/text-alignment-report/blob/master/einsiedeln_001v_transcript.txt)
+
+[Einsiedeln_001v OCRed transcript with Transkribus](https://github.com/timothydereuse/text-alignment-report/blob/master/einsiedeln_001v_ocr.txt)
 
 #### Gap Penalties
 
