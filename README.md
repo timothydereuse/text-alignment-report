@@ -143,13 +143,15 @@ A large application for recognizing handwriting in historical documents - totall
 
 Intended to be used by manually transcribing a large amount of text and then using that to train a model of your own manuscript. This requires manual assistance from their project managers. They suggest at least 15,000 words of ground truth before a model can be trained. They do have a few already-trained models of various types of handwriting, though, including gothic script. Here are some results of transcribing plainchant manuscripts using their gothic script model:
 
-[Einseideln](https://raw.githubusercontent.com/timothydereuse/text-alignment-report/master/transkribus-einseideln.png) |
+[Einsiedeln](https://raw.githubusercontent.com/timothydereuse/text-alignment-report/master/transkribus-einseideln.png) |
 [Klosterneuberg](https://github.com/timothydereuse/text-alignment-report/blob/master/transkribus-klosterneuberg.png) |
 [Salzinnes](https://github.com/timothydereuse/text-alignment-report/blob/master/transkribus-salzinnes.png) |
 [St. Maurf](https://github.com/timothydereuse/text-alignment-report/blob/master/transkribus-stmaurf.png) |
 [St. Gall 390](https://github.com/timothydereuse/text-alignment-report/blob/master/transkribus-stgall.png)
 
 It's not perfect, but it might be close enough for a sequence alignment approach, at least for some manuscripts.
+
+Problem: Transkribus's bounding boxes are not at all accurate. [Here is its results on finding each chunk of text in Einsiedeln_001r](https://raw.githubusercontent.com/timothydereuse/text-alignment-report/master/einsiedeln_001r_transkibusboxes.png). The small amount of vertical jitter was added by me so that overlapping boxes can be more easily distinguished. Some of the boxes are relatively sensible, but some are several times as big as they ought to be.
 
 [Another Transkribus-based model of gothic handwriting that might be usable, though not yet public](https://read.transkribus.eu/2017/06/09/medieval-handwriting-and-handwritten-text-recognition/). Interesting note: language models are not that useful for these texts because spellings are so inconsistent even within individual manuscripts written by the same person.
 
