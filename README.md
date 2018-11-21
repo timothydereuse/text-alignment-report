@@ -132,7 +132,7 @@ I haven't yet run anything to quantify whether or not this gives better results 
 [A 2015 test of then-current OCR methods on medieval manuscripts](https://brandonwhawk.net/2015/04/20/ocr-and-medieval-manuscripts-establishing-a-baseline/). Two proprietary OCR engines are used (Adobe Acrobat and ABBYY Finereader). On a printed source, FineReader has a per-character accuracy of 97.78%, and Acrobat has an accuracy of 87.57%. However, on the handwritten source examined (St. Gall 561), only Finereader bears any remote resemblance to the original text (no percentage given, but it'd be quite low; less than 50%).
 
 #### Google Tesseract
-Written in C++, [python bindings with pytesseract](https://pypi.org/project/pytesseract/)
+Written in C++, [python bindings with pytesseract](https://pypi.org/project/pytesseract/). [Overview of the OCR engine](http://static.googleusercontent.com/media/research.google.com/en//pubs/archive/33418.pdf). Lots of options / parameters, but documentation is lacking, and it's not particularly transparent beyond the relatively high-level description in that paper.
 
 Intended only for printed script, but can be trained on handwriting; [paper achieving 90% per-character success rate on handwritten characters using Tesseract](https://arxiv.org/abs/1003.5893) however, these characters are pre-segmented.
 
@@ -155,6 +155,8 @@ It's not perfect, but it might be close enough for a sequence alignment approach
 
 #### OCRopus [[Homepage]](https://github.com/tmbdev/ocropy)
 Collection of OCR utilities, usable from command line, based in LSTM. Once contained specific support for handwriting / manuscripts, but that functionality has been removed. It can still be used for historical manuscripts, with some success: [with lots of careful training, this project managed 9.7% error rates on handwriting similar to that of the Salzinnes manuscript](https://graal.hypotheses.org/786). However, the same model did not work well on other manuscripts.
+
+One benefit to OCRopus is that its character segmentation methods are more transparent and configurable; Tesseract works primarily off of connected components. [Here is a case study using OCRopus on text that Tesseract struggles to segment correctly](http://www.danvk.org/2015/01/09/extracting-text-from-an-image-using-ocropus.html). Unfortunately, there appears to be no way to get character-level or even word-level bounding boxes on the OCR output. The closest available thing is a mode that outputs an hOCR file containing bounding boxes for each detected text line.
 
 #### In Codice Ratio [[Homepage]](http://www.inf.uniroma3.it/db/icr/)
 
